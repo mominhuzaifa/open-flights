@@ -24,8 +24,8 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 # Compile assets and perform database migrations
-RUN bundle exec rake assets:precompile
-RUN bundle exec rake db:migrate
+#RUN bundle exec rake assets:precompile
+#RUN bundle exec rake db:migrate
 
 # Expose the port the app runs on
 EXPOSE 3000
