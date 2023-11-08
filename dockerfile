@@ -10,8 +10,8 @@ COPY Gemfile Gemfile.lock ./
 # Install Ruby dependencies
 RUN bundle install
 
-# Copy the package.json and package-lock.json from app root into the Docker image
-COPY package.json package-lock.json ./
+# Copy the package.json from app root into the Docker image
+COPY package.json ./
 
 # Install Node.js dependencies
 RUN npm install
