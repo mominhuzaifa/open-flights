@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: open-flights-ingress
+  namespace: prod
+  labels:
+    env: prod
+    app: open-flights
+    layer: frontend
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: rubyapp.connectingclouds.in
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: open-flights-service
+                port:
+                  number: 80

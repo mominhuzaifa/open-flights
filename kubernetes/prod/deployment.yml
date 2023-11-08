@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-flights-deployment
+  labels:
+    app: open-flights
+spec:
+  replicas: 3  # Number of desired replicas (adjust as needed)
+  selector:
+    matchLabels:
+      app: open-flights
+  template:
+    metadata:
+      labels:
+        app: open-flights
+    spec:
+      containers:
+      - name: open-flights
+        image: 150387322390.dkr.ecr.ap-south-1.amazonaws.com/employee-performance-prod:prod-img-v1.16 # Replace with your Docker image details
+        ports:
+        - containerPort: 3000  # Port your application is listening on
+	env:
+          - name: RAILS_ENV
+            value: "production"
+          - name: RACK_ENV
+            value: "production"
+          - name: DATABASE_HOST
+            value: "postgres-service" # Replace with the name of your database service
+          - name: DATABASE_PORT
+            value: "5432"
+          - name: DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: open-flights-secrets
+                key: database-username
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: open-flights-secrets
+                key: database-password

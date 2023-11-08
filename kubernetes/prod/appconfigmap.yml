@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: open-flights-config
+  namespace: prod
+  labels:
+    env: prod
+    app: open-flights
+    layer: frontend
+data:
+  application.properties: |-

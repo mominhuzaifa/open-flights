@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    env: prod
+    app: open-flights
+    layer: frontend
+  name: open-flights-service
+  namespace: prod
+spec:
+  type: NodePort
+  selector:
+    app: open-flights
+  ports:
+    - name: api
+      port: 3000
+      targetPort: 3000
