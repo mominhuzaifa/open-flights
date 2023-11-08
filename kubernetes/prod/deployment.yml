@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: open-flights
-        image: 150387322390.dkr.ecr.ap-south-1.amazonaws.com/employee-performance-prod:prod-img-v1.16 # Replace with your Docker image details
+        image: 150387322390.dkr.ecr.ap-south-1.amazonaws.com/open-flights:latest
         ports:
         - containerPort: 3000  # Port your application is listening on
 	env:
